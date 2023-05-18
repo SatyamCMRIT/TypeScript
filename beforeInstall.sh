@@ -1,3 +1,6 @@
 #!/bin/bash
-cd /var/www/html
-sudo rm -rf *
+
+# Perform any necessary setup or preparation before the application installation
+
+# Example: Print a message
+echo "Running before-install script..."
