@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Change to the project directory
-cd /var/www/TypeScript-Node-Starter/dist
+# Start the application or any required services
 
-# Start the Node.js application
+# Example: Start the Node.js application
+echo "Running application-start script..."
 npm start
