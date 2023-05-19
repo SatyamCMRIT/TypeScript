@@ -1,20 +1,28 @@
 version: 0.2
-
+env:
+  variables:
+    S3_BUCKET: "webbucket360"
 phases:
   install:
     runtime-versions:
-      nodejs: 12.x
+      nodejs: 18
+  pre_build:
     commands:
-      - npm install -g typescript
+      - echo Installing source NPM dependencies...
       - npm install
+      - npm install -D typescript
+
   build:
     commands:
-      - npm run build --if-present
+      - echo Build started on `date`
+      - npm run build
   post_build:
-    commands:
-      - echo "Build complete"
+     commands:
+      - aws s3 cp node_modules s3://${S3_BUCKET} --recursive
 
 artifacts:
   files:
-    - '**/*'
+      - '**/*'
+      - '!node_modules/**'
+  base-directory: 'node_modules/*'
   discard-paths: yes
