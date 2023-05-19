@@ -1,23 +1,17 @@
 version: 0.0
 os: linux
-
+files:
+  - source: /nodejs/index.html
+    destination: /var/www
 hooks:
-  ApplicationStop:
-    - location: application-stop.sh
-      timeout: 300
-      runas: root
-
   BeforeInstall:
-    - location: before-install.sh
+    - location: scripts/install_dependencies
       timeout: 300
       runas: root
-
-  AfterInstall:
-    - location: after-install.sh
+    - location: scripts/start_server
       timeout: 300
       runas: root
-
-  ApplicationStart:
-    - location: application-start.sh
+  ApplicationStop:
+    - location: scripts/stop_server
       timeout: 300
       runas: root
