@@ -1,7 +1,7 @@
 version: 0.2
 env:
   variables:
-    S3_BUCKET: "angular-site-first-12"
+    S3_BUCKET: "webbucket360"
 version: 0.2
 
 phases:
